@@ -192,7 +192,7 @@ INSERT INTO SC VALUES('07' , '03' , 98)
 
 # 面试题
 
-1、查询" 01 "课程比" 02"课程成绩高的学生的信息及课程分数
+1、查询" 01 "课程比" 02 "课程成绩高的学生的信息及课程分数
 
 ```mysql
 # 方法一
@@ -221,24 +221,22 @@ RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记�
 
 
 
-2、查询同时存在" 01 "课程和"02 "课程的情况
+2、查询同时存在" 01 "课程和" 02 "课程的学生的信息
 
-```
---方法一
-SELECT
-  A.*
+```mysql
+# 方法一
+SELECT A.*
 FROM Student A
 JOIN SC B ON A.SID=B.SID
 JOIN SC C ON C.SID=B.SID
 WHERE B.CID='01'
 AND C.CID='02'
 
---方法二
-SELECT
-  A.*
+# 方法二
+SELECT A.*
 FROM Student A
-JOIN (SELECT * FROM SC WHERE CID = '01') B ON A.SID=B.SID
-JOIN (SELECT * FROM SC WHERE CID = '02') C ON B.SID = C.SID
+JOIN (SELECT * FROM SC WHERE CID = '01') B ON A.SID = B.SID
+JOIN (SELECT * FROM SC WHERE CID = '02') C ON A.SID = C.SID
 ```
 
 
